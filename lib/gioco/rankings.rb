@@ -9,7 +9,7 @@ class Gioco
                          points.kind_id, SUM(points.value) AS kind_points")
                 .where("points.kind_id = #{t.id}")
                 .joins(:points)
-                .group("kind_id, #{RESOURCE_NAME}_id")
+                .group("kind_id, users.id")
                 .order("kind_points DESC")
 
         ranking << { :kind => t, :ranking => data }
@@ -22,7 +22,7 @@ class Gioco
                   .select("#{RESOURCE_NAME.capitalize.constantize.table_name}.*,
                            COUNT(levels.badge_id) AS number_of_levels")
                   .joins(:levels)
-                  .group("#{RESOURCE_NAME}_id")
+                  .group("users.id")
                   .order("number_of_levels DESC")
     end
 

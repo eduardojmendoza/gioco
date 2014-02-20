@@ -24,7 +24,6 @@ class Gioco
       old_pontuation = info[:old_pontuation]
       related_badges = info[:related_badges]
       new_pontuation = info[:new_pontuation]
-      redirect_to "/"
       Badge.transaction do
           if KINDS && kind
           resource.points << Point.create({ :kind_id => kind.id, :value => new_pontuation })

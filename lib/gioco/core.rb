@@ -35,6 +35,7 @@ class Gioco
           if old_pontuation < points
             unless resource.badges.include?(badge)
               resource.badges << badge
+              NotifyMailer.notify_user_badge(resource,badge).deliver
               badges[:added] = [] if badges[:added].nil?
               badges[:added] << badge
             end

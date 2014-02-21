@@ -18,7 +18,6 @@ class Gioco
     end
 
     def self.sync_resource_by_points(resource, points, kind = false)
-      debugger
       badges         = {}
       info           = self.related_info(resource, points, kind)
       old_pontuation = info[:old_pontuation]
